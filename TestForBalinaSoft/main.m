@@ -5,7 +5,7 @@
 //  Created by Admin on 13.04.17.
 //  Copyright © 2017 Admin. All rights reserved.
 //
-
+#define AMSlideMenuWithoutStoryboards
 #import <UIKit/UIKit.h>
 #import "AppDelegate.h"
 
