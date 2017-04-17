@@ -237,28 +237,11 @@
 
 - (void) loadWithURLSessionOnSuccess:(void(^)(NSData *data)) success
 {
-    NSURLSession *_session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
+    NSURL *_url = [NSURL URLWithString:@"http://ufa.farfor.ru/getyml/?key=ukAXxeJYZN"];
     
-    NSURL *_requestURL = [NSURL URLWithString:@"http://ufa.farfor.ru/getyml/?key=ukAXxeJYZN"];
+    NSData *_data = [NSData dataWithContentsOfURL:_url];
     
-    NSMutableURLRequest *_myRequest = [NSMutableURLRequest requestWithURL:_requestURL];
-    
-    [_myRequest addValue: @"text/html; charset=windows-1251" forHTTPHeaderField:@"Content-Type"];
-    
-    NSURLSessionDataTask *_task = [_session dataTaskWithRequest:_myRequest
-                                              completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error)
-                                   {
-                                       if(error)
-                                       {
-                                           NSLog(@"%@", error);
-                                       }
-                                       else
-                                       {
-                                           success(data);
-                                       }
-                                   }];
-    
-    [_task resume];
+    [self parserInitWithDataAndParse:_data];
     
 }
 
